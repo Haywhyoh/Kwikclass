@@ -1,6 +1,6 @@
 from models.engine.db_storage import DB_Storage
 from models.models import Courses
-from flask import Flask, jsonify
+from flask import Flask, jsonify, abort
 from flask import Blueprint
 import json
 
@@ -17,3 +17,13 @@ def get_courses():
             del course['_sa_instance_state']
         new_list.append(course)
     return jsonify((new_list))
+
+@courses.route('/courses/<course_id>', strict_slashes=False)
+def get_course(course_id):
+    """ Retrieves an user """
+    course = storage.get(cls=Courses, id=course_id)
+    if not course:
+        abort(404)
+    return jsonify(course)
+
+
