@@ -1,4 +1,4 @@
-from sqlalchemy.orm import declarative_base, relationship
+from sqlalchemy.orm import declarative_base, relationship, sessionmaker
 from sqlalchemy import create_engine, Column, String, Integer, SmallInteger, Text, DateTime, ForeignKey, Table, Boolean
 from datetime import datetime
 import uuid
@@ -15,6 +15,7 @@ engine=create_engine(url="mysql://{0}:{1}@{2}:{3}/{4}".format(
             user, password, host, port, database
             ), echo=True)
 
+Session=sessionmaker(bind=engine, expire_on_commit=False)
 time = "%Y-%m-%dT%H:%M:%S.%f"
 
 class BaseModel():
@@ -42,7 +43,21 @@ class BaseModel():
             self.id = str(uuid.uuid4())
             self.created_at = datetime.utcnow()
             self.updated_at = self.created_at
+    
+    def __str__(self):
+        """String representation of the BaseModel class"""
+        return "[{:s}] ({:s}) {}".format(self.__class__.__name__, self.id,
+                                         self.__dict__)
 
+    def to_dict(self):
+        new_dict = {}
+        new_dict = self.__dict__.copy()
+        if "created_at" in new_dict:
+            new_dict["created_at"] = new_dict["created_at"].strftime(time)
+        if "updated_at" in new_dict:
+            new_dict["updated_at"] = new_dict["updated_at"].strftime(time)
+        new_dict["__class__"] = self.__class__.__name__
+        return new_dict
 
 class Student(BaseModel, Base):
     __tablename__ = 'student'
@@ -52,13 +67,20 @@ class Student(BaseModel, Base):
     certificate_earned = Column(Integer())
     course_enrolled = Column(Integer())
     hours_watched = Column(Integer())
-    country = Column(String(20), nullable=False)
-    sex = Column(String(10), nullable=False)
+    country = Column(String(40), nullable=False)
+    sex = Column(String(15), nullable=False)
     date_of_birth = Column(String(10), nullable=False)
     schedules = Column(Integer())
     email = Column(String(60), unique=True)
-    profile_picture = Column(String(50), unique=True)
+    profile_picture = Column(String(50))
     courses = relationship('Courses',secondary='enrollment')
+
+    def __repr__(self):
+        return f"Student: {self.first_name} , {self.last_name}, {self.active_courses}, {self.certificate_earned},{self.course_enrolled}, {self.hours_watched}, {self.country}, {self.sex}, {self.date_of_birth}, {self.schedules}, {self.email}, {self.profile_picture}"
+
+    def __init__(self, *args, **kwargs):
+        """initializes user"""
+        super().__init__(*args, **kwargs)
 
 class Instructor(BaseModel, Base):
     __tablename__ = 'instructor'
@@ -67,8 +89,8 @@ class Instructor(BaseModel, Base):
     email = Column(String(60), unique=True)
     no_of_courses = Column(SmallInteger(), default=0)
     total_earning = Column(SmallInteger(), default=0)
-    country = Column(String(20), nullable=False)
-    sex = Column(String(10), nullable=False)
+    country = Column(String(40), nullable=False)
+    sex = Column(String(15), nullable=False)
     date_of_birth = Column(String(10), nullable=False)
     profile_picture = Column(String(50), unique=True)
     courses = relationship('Courses',secondary='created')
@@ -78,7 +100,7 @@ class Courses(BaseModel, Base):
     __tablename__ = 'courses'
     title = Column(Text(), nullable=True)
     no_of_reviews = Column(SmallInteger(), default=0)
-    no_erolled = Column(SmallInteger(), default=0)
+    no_enrolled = Column(SmallInteger(), default=0)
     banner_link = Column(String(50), nullable=False)
     category = Column(String(15), nullable=False)
     no_of_sections = Column(SmallInteger(), nullable=False)
@@ -86,9 +108,7 @@ class Courses(BaseModel, Base):
     estimated_time = Column(SmallInteger(), nullable=False)
     course_desc = Column(Text(), nullable=False)
     no_of_document = Column(SmallInteger(), nullable=False)
-    created_at = Column(DateTime(), nullable=False)
-    updated_at = Column(DateTime(), nullable=False)
-    pricing = relationship("Pricing")
+    pricing = relationship("Pricing", uselist=False, backref="courses")
     student = relationship(Student,secondary='enrollment')
     instructors = relationship(Instructor,secondary='created')
 
