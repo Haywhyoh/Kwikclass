@@ -9,11 +9,11 @@ storage = DB_Storage()
 
 @instructor.route('/instructors', strict_slashes=False)
 def get_instructor():
-    new_list = {}
+    new_list = []
     all_instructors = storage.all(cls=Instructor)
     for instructor in all_instructors:
         instructor = instructor.__dict__ 
         if instructor['_sa_instance_state']:
             del instructor['_sa_instance_state']
-        new_list.update(instructor)
+        new_list.append(instructor)
     return jsonify((new_list))
