@@ -3,6 +3,8 @@ from models import models
 from sqlalchemy.orm import scoped_session, sessionmaker
 from models.models import Student, Instructor, Pricing, Courses, Session
 import json
+from datetime import datetime
+time = "%Y-%m-%dT%H:%M:%S.%f"
 
 classes = {"Student": Student, "Instructor": Instructor,
            "Course": Courses, "Pricing": Pricing}
@@ -24,16 +26,16 @@ class DB_Storage:
 
     def new(self, obj):
         """add the object to the current database session"""
-        self.__session.add(obj)
+        self.local_session.add(obj)
 
     def save(self):
         """commit all changes of the current database session"""
-        self.__session.commit()
+        self.local_session.commit()
 
     def delete(self, obj=None):
         """delete from the current database session obj if not None"""
         if obj is not None:
-            self.__session.delete(obj)
+            self.local_session.delete(obj)
 
     def reload(self):
         """reloads data from the database"""
@@ -54,8 +56,22 @@ class DB_Storage:
             student = student.__dict__ 
             del student['_sa_instance_state']
             if(student['id'] == id):
+                if "created_at" in student and student["created_at"] is not None:
+                    student["created_at"] = student["created_at"].strftime(time)
+                if "updated_at" in student and student["updated_at"] is not None:
+                    student["updated_at"] =student["updated_at"].strftime(time)
                 return json.dumps(student)
 
+    def delete_user(self, user_id):
+        """
+        Deletes a user Object
+        """
+
+        user = self.get(Student, user_id)
+
+
+        self.delete(user)
+        self.save()
 if __name__ == "__main__":
 
     obj = {
@@ -85,9 +101,14 @@ if __name__ == "__main__":
         email  = "adefeyisayo@gmail.com",
         profile_picture  = "wwwjioajovjavpajdvja")
     db = DB_Storage()
+   
+    #student1 =  db.new(new_student)
     #student = db.all(Student)
     #student = db.get_student()
-    student = db.get(id='af51479d-6c82-41f2-ac9b-00b2e93322d8', cls=Student)
-    print(student)
-    print (type(student))
+    #student = db.get(id='Sam', cls=Student)
+    student = db.get(cls=Student, id="da6ba7d3-baaf-4b15-9965-caf2faa36b47")
+    #db.local_session.query(Student).filter_by(id="da6ba7d3-baaf-4b15-9965-caf2faa36b47").delete(synchronize_session=False)
+    db.save()
+    #print(student)
+   # print (type(student))
     db.close()
