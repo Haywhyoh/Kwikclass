@@ -18,6 +18,9 @@ engine=create_engine(url="mysql://{0}:{1}@{2}:{3}/{4}".format(
 Session=sessionmaker(bind=engine, expire_on_commit=False)
 time = "%Y-%m-%dT%H:%M:%S.%f"
 
+enrollment = Table('enrollment', Base.metadata, 
+                    course_id = Column(String(60), ForeignKey('courses.id'), primary_key = True)
+                    student_id = Column(String(60), ForeignKey('student.id'), primary_key=True))
 class BaseModel():
     id = Column(String(60), primary_key=True)
     created_at = Column(DateTime, default=datetime.utcnow)
@@ -108,7 +111,7 @@ class Courses(BaseModel, Base):
     estimated_time = Column(SmallInteger(), nullable=False)
     course_desc = Column(Text(), nullable=False)
     no_of_document = Column(SmallInteger(), nullable=False)
-    pricing = relationship("Pricing", uselist=False, backref="courses")
+    pricing = relationship("Pricing", uselist=False, back_populates="parent", cascade="all, delete")
     student = relationship(Student,secondary='enrollment')
     instructors = relationship(Instructor,secondary='created')
 
@@ -123,12 +126,10 @@ class Pricing(Base, BaseModel):
     base_price = Column(SmallInteger(), nullable=False)
     promo_price = Column(SmallInteger())
     paid = Column(Boolean(), nullable=False)
-    course_id = Column(String(60), ForeignKey("courses.id"))
+    course_id = Column(String(60), ForeignKey("courses.id", ondelete="CASCADE"))
+    course = relationship("Courses", back_populates='child')
 
 class Created(Base):
     __tablename__ = 'created'
     course_id = Column(String(60), ForeignKey('courses.id'), primary_key = True)
     instructor_id = Column(String(60), ForeignKey('instructor.id'), primary_key=True)
-
-if __name__ == "__main__":
-    Base.metadata.create_all(engine)
