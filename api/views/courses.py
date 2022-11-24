@@ -2,6 +2,7 @@ from models.engine.db_storage import DB_Storage
 from models.models import Courses
 from flask import Flask, jsonify, abort, make_response, request
 from flask import Blueprint
+from sqlalchemy import desc
 import json
 
 courses = Blueprint('courses', __name__)
@@ -36,6 +37,11 @@ def delete_course(course_id):
             abort(404)
         storage.save()
         return make_response(jsonify({'status' : "Succesfully deleted"}), 200)
+
+@courses.route('/courses/popular', methods=['GET'], strict_slashes=False)
+def popular():
+    course= storage.local_session.query(courses).order_by(desc(courses.no_of_reviews))
+    return jsonify(course)
 
 @courses.route('/courses', methods=['POST'], strict_slashes=False)
 def post_course():
