@@ -1,0 +1,9 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+.btn-small {
+    @apply bg-orange text-white px-7 py-3;
+}

@@ -18,6 +18,7 @@ engine=create_engine(url="mysql://{0}:{1}@{2}:{3}/{4}".format(
 Session=sessionmaker(bind=engine, expire_on_commit=False)
 time = "%Y-%m-%dT%H:%M:%S.%f"
 
+
 class BaseModel():
     id = Column(String(60), primary_key=True)
     created_at = Column(DateTime, default=datetime.utcnow)
@@ -43,7 +44,7 @@ class BaseModel():
             self.id = str(uuid.uuid4())
             self.created_at = datetime.utcnow()
             self.updated_at = self.created_at
-    
+
     def __str__(self):
         """String representation of the BaseModel class"""
         return "[{:s}] ({:s}) {}".format(self.__class__.__name__, self.id,
@@ -61,6 +62,7 @@ class BaseModel():
 
 class Student(BaseModel, Base):
     __tablename__ = 'student'
+    user_name =Column(String(60), nullable=False)
     first_name = Column(String(40), nullable=False)
     last_name = Column(String(40), nullable=False)
     active_courses = Column(Integer())
@@ -73,7 +75,7 @@ class Student(BaseModel, Base):
     schedules = Column(Integer())
     email = Column(String(60), unique=True)
     profile_picture = Column(String(50))
-    courses = relationship('Courses',secondary='enrollment')
+    courses = relationship('Courses',secondary='enrollment', back_populates='parents')
 
     def __repr__(self):
         return f"Student: {self.first_name} , {self.last_name}, {self.active_courses}, {self.certificate_earned},{self.course_enrolled}, {self.hours_watched}, {self.country}, {self.sex}, {self.date_of_birth}, {self.schedules}, {self.email}, {self.profile_picture}"
@@ -84,6 +86,7 @@ class Student(BaseModel, Base):
 
 class Instructor(BaseModel, Base):
     __tablename__ = 'instructor'
+    user_name =Column(String(60), nullable=False)
     first_name = Column(String(40), nullable=False)
     last_name = Column(String(40), nullable=False)
     email = Column(String(60), unique=True)
@@ -93,7 +96,7 @@ class Instructor(BaseModel, Base):
     sex = Column(String(15), nullable=False)
     date_of_birth = Column(String(10), nullable=False)
     profile_picture = Column(String(50), unique=True)
-    courses = relationship('Courses',secondary='created')
+    courses = relationship('Courses',secondary='created', back_populates='parents')
 
 
 class Courses(BaseModel, Base):
@@ -102,33 +105,44 @@ class Courses(BaseModel, Base):
     no_of_reviews = Column(SmallInteger(), default=0)
     no_enrolled = Column(SmallInteger(), default=0)
     banner_link = Column(String(50), nullable=False)
-    category = Column(String(15), nullable=False)
+    category = Column(String(50), nullable=False)
     no_of_sections = Column(SmallInteger(), nullable=False)
     no_of_lectures = Column(SmallInteger(), nullable=False)
     estimated_time = Column(SmallInteger(), nullable=False)
     course_desc = Column(Text(), nullable=False)
     no_of_document = Column(SmallInteger(), nullable=False)
-    pricing = relationship("Pricing", uselist=False, backref="courses")
-    student = relationship(Student,secondary='enrollment')
-    instructors = relationship(Instructor,secondary='created')
+    pricing = relationship("Pricing", uselist=False, back_populates="parent", cascade="all, delete")
+    student = relationship(Student,secondary='enrollment', back_populates='children')
+    instructors = relationship(Instructor,secondary='created', back_populates='children')
 
 
 class Enrollment(BaseModel, Base):
-    __tablename__ = 'enrollment'
-    course_id = Column(String(60), ForeignKey('courses.id'), primary_key = True)
-    student_id = Column(String(60), ForeignKey('student.id'), primary_key=True)
+     __tablename__ = 'enrollment'
+     course_id = Column(String(60), ForeignKey('courses.id'), primary_key = True)
+     student_id = Column(String(60), ForeignKey('student.id'), primary_key=True)
 
 class Pricing(Base, BaseModel):
     __tablename__ = 'course_pricing'
     base_price = Column(SmallInteger(), nullable=False)
     promo_price = Column(SmallInteger())
     paid = Column(Boolean(), nullable=False)
-    course_id = Column(String(60), ForeignKey("courses.id"))
+    course_id = Column(String(60), ForeignKey("courses.id", ondelete="CASCADE"))
+    course = relationship("Courses", back_populates='child')
 
 class Created(Base):
     __tablename__ = 'created'
     course_id = Column(String(60), ForeignKey('courses.id'), primary_key = True)
     instructor_id = Column(String(60), ForeignKey('instructor.id'), primary_key=True)
 
-if __name__ == "__main__":
+# enrollment = Table('enrollment', Base.metadata,
+#                     course_id = Column(String(60), ForeignKey('courses.id'), primary_key = True),
+#                     student_id = Column(String(60), ForeignKey('student.id'), primary_key=True))
+
+# created =  Table('created', Base.metadata,
+#     course_id = Column(String(60), ForeignKey('courses.id'), primary_key = True),
+#     instructor_id = Column(String(60), ForeignKey('instructor.id'), primary_key=True))
+
+Base.metadata.create_all(engine)
+
+if "__init__" == "__main__":
     Base.metadata.create_all(engine)

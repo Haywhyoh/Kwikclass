@@ -1,8 +1,7 @@
 from models.engine.db_storage import DB_Storage
 from models.models import Student
-from flask import Flask, jsonify, abort, make_response, request
+from flask import jsonify, abort, make_response, request
 from flask import Blueprint
-import json
 
 
 student = Blueprint('student', __name__)
@@ -55,3 +54,4 @@ def post_student():
     instance = Student(**data)
     instance.save()
     return make_response(jsonify(instance.to_dict()), 201)
+
