@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <title>kwikclass</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></head>
+<body class="font-body bg-white">
+    <header>
+        <nav class="bg-white shadow-lg">
+            <div class="max-w-6xl mx-auto px-4">
+				<div class="flex justify-between">
+					<div class="flex space-x-7">
+                        <div class="max-w">
+                            <h1 class="text-text_black font-solway"><a href="#" class="flex items-center text-3xl py-4 px-2">Kwik <span class="text-orange"> Class</span></a></h1>
+                        </div>
+                        <ul class="hidden md:flex items-center space-x-1">
+                            <li><a
+                                href=""
+                                class="py-4 px-2 text-green-500 border-b-4 border-green-500 font-semibold "
+                                >Home</a></li>
+                            <li><a
+                                href=""
+                                class="py-4 px-2 text-green-500 border-b-4 border-green-500 font-semibold "
+                                >Courses</a></li>
+                            <li><a
+                                href=""
+                                class="py-4 px-2 text-green-500 border-b-4 border-green-500 font-semibold "
+                                >Blog</a></li>
+                            <li><a
+                                href=""
+                                class="py-4 px-2 text-green-500 border-b-4 border-green-500 font-semibold "
+                                >Instructors</a></li>
+                        </ul>
+                        <div class="hidden md:flex items-center space-x-3 ">
+                            <a href="" class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-orange hover:text-white transition duration-300">Log In</a>
+                            <a href="" class="py-2 px-2 font-medium text-orange bg-orange rounded hover:bg-green-400 transition duration-300">Cart</a>
+                        </div>
+                    </div>
+                        <div class="md:hidden flex items-center">
+                            <button class="outline-none text-orange mobile-menu-button">
+                            <svg class=" w-6 h-6 text-gray-500 hover:text-green-500 "
+                                x-show="!showMenu"
+                                fill="none"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden mobile-menu">
+				<ul class="">
+					<li class="active"><a href="index.html" class="block text-sm px-2 py-4 text-orange bg-green-500 font-semibold">Home</a></li>
+					<li><a href="#services" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Courses</a></li>
+					<li><a href="#about" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Blog</a></li>
+					<li><a href="#contact" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Instructors</a></li>
+				</ul>
+			</div>
+        </nav>
+    </header>
+
+<!--==============================HOME========================================-->
+    <section class="container h-auto home">
+        <div class="relative">
+            <div class="">
+                <div class="static">
+                    <h1 class=" font-normal my-10 text-center text-5xl">Grow And Imporove your Professional Skill with Kwikclass</h1>
+                    <p class="hidden">Here at Nuga we assist you in improving your professional skills with our available courses and programs from anywhere around the world. 
+                        You get to do all of this at your own pace and you also recieve a certificate at the end of every course you take</p>
+                    <form action="" class="hidden">
+                        <input type="text" placeholder="Course title or keyword" name="search">
+                            <select name="categories" id="categories">
+                                <option value="volvo">UI/Ux</option>
+                                <option value="saab">Music</option>
+                                <option value="mercedes">Art</option>
+                                <option value="audi">Software Engineering</option>
+                                <option value="audi">Marketing</option>
+                                <option value="audi">Graphics Design</option>
+                                <option value="audi">Others</option>
+                            </select>
+                        <button>Search</button>
+                    </form>
+                </div>
+                   
+                <div class="static h-96">
+                    <img src="../images/orange_bg_5.svg" alt="" class="absolute left-0 w-72">
+                    <img src="../images/orange_bg_4.svg" alt="" class="absolute left-3 w-72">
+                    <img src="../images/orange_bg_3.svg" alt="" class="absolute left-6 w-72">
+                    <img src="../images/orange_bg_2.svg" alt="" class="absolute left-9 w-72">
+                    <img src="../images/orange_bg.svg" alt="" class="absolute left-0 w-72">
+                    <img src="../images/home_img.png" alt="" class="absolute w-72 max-h-fit">
+                </div>
+            </div>
+            <div class=" mt-20 text-center grid grid-cols-2 gap-4">
+                <div>
+                    <h2 class="text-4xl">100K</h2>
+                    <h4 class="text-gray">Students</h4>
+                </div>
+                <div>
+                    <h2 class="text-4xl">10K</h2>
+                    <h4 class="text-gray">Courses</h4>
+                </div>
+                <div>
+                    <h2 class="text-4xl">30</h2>
+                    <h4 class="text-gray">Categories</h4>
+                </div>
+                <div>
+                    <h2 class="text-4xl">30K</h2>
+                    <h4 class="text-gray">Issued certificate</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!--===============================POPULAR=======================================-->
+    <section class="popular my-10 container">
+        <div class="text-3xl"><h1>Most <span class="text-orange"> Popular</span> Courses</h1></div>
+        <div>
+            <ul>
+                <li>All Categories</li>
+                <li>UI/UX design</li>
+                <li>Graphic Design</li>
+                <li>Business Administration</li>
+                <li>Marketing</li>
+                <li>Computer Science</li>
+                <i>icon</i>
+            </ul>
+        </div>
+        <div>
+            <div class= "my-4 border border-border_color">
+                <div><img src="../images/course_img.png" alt=""></div>
+                <div class="text-xl p-3">UI/Ux design basics road map</div>
+                <div class=" px-3 grid pb-2 grid-cols-2 gap-10">
+                    <div class="flex gap-2">
+                        <h4>$165</h4>
+                        <h4 class="text-blur">$226</h4>
+                    </div>
+                    <div class="flex ">
+                        <p class="pr-2" >4.5</p>
+                        <i class="text-orange ri-star-s-fill"></i>
+                        <i class="text-orange ri-star-s-fill"></i>
+                        <i class="text-orange ri-star-s-fill"></i>
+                        <i class="text-orange ri-star-s-fill"></i>
+                        <i class="text-orange ri-star-s-fill"></i>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-10  px-3">
+                    <div><img src=""> <p class="text-gray-200">James Clifford</p></div>
+                    <div><span>123 456</span> enrolled</div>
+                </div>
+            </div>
+            <div class= "my-4 border border-border_color">
+                <div><img src="../images/course_img.png" alt=""></div>
+                <div class="text-xl p-3">UI/Ux design basics road map</div>
+                <div class=" px-3 grid pb-2 grid-cols-2 gap-10">
+                    <div class="flex gap-2">
+                        <h4>$165</h4>
+                        <h4 class="text-blur">$226</h4>
+                    </div>
+                    <div class="flex ">
+                        <p class="pr-2" >4.5</p>
+                        <i class="text-orange ri-star-s-fill"></i>
+                        <i class="text-orange ri-star-s-fill"></i>
+                        <i class="text-orange ri-star-s-fill"></i>
+                        <i class="text-orange ri-star-s-fill"></i>
+                        <i class="text-orange ri-star-s-fill"></i>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-10  px-3">
+                    <div><img src=""> <p class="text-gray-200">James Clifford</p></div>
+                    <div><span>123 456</span> enrolled</div>
+                </div>
+            </div>
+            <div class= "my-4 border border-border_color">
+                <div><img src="../images/course_img.png" alt=""></div>
+                <div class="text-xl p-3">UI/Ux design basics road map</div>
+                <div class=" px-3 grid pb-2 grid-cols-2 gap-10">
+                    <div class="flex gap-2">
+                        <h4>$165</h4>
+                        <h4 class="text-blur">$226</h4>
+                    </div>
+                    <div class="flex ">
+                        <p class="pr-2" >4.5</p>
+                        <i class="text-orange ri-star-s-fill"></i>
+                        <i class="text-orange ri-star-s-fill"></i>
+                        <i class="text-orange ri-star-s-fill"></i>
+                        <i class="text-orange ri-star-s-fill"></i>
+                        <i class="text-orange ri-star-s-fill"></i>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-10  px-3">
+                    <div><img src=""> <p class="text-gray-200">James Clifford</p></div>
+                    <div><span>123 456</span> enrolled</div>
+                </div>
+            </div>
+            <div class= "my-4 border border-border_color">
+                <div><img src="../images/course_img.png" alt=""></div>
+                <div class="text-xl p-3">UI/Ux design basics road map</div>
+                <div class=" px-3 grid pb-2 grid-cols-2 gap-10">
+                    <div class="flex gap-2">
+                        <h4>$165</h4>
+                        <h4 class="text-blur">$226</h4>
+                    </div>
+                    <div class="flex ">
+                        <p class="pr-2" >4.5</p>
+                        <i class="text-orange ri-star-s-fill"></i>
+                        <i class="text-orange ri-star-s-fill"></i>
+                        <i class="text-orange ri-star-s-fill"></i>
+                        <i class="text-orange ri-star-s-fill"></i>
+                        <i class="text-orange ri-star-s-fill"></i>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-10  px-3">
+                    <div><img src=""> <p class="text-gray-200">James Clifford</p></div>
+                    <div><span>123 456</span> enrolled</div>
+                </div>
+            </div>
+            <div class= "my-4 border border-border_color">
+                <div><img src="../images/course_img.png" alt=""></div>
+                <div class="text-xl p-3">UI/Ux design basics road map</div>
+                <div class=" px-3 grid pb-2 grid-cols-2 gap-10">
+                    <div class="flex gap-2">
+                        <h4>$165</h4>
+                        <h4 class="text-blur">$226</h4>
+                    </div>
+                    <div class="flex ">
+                        <p class="pr-2" >4.5</p>
+                        <i class="text-orange ri-star-s-fill"></i>
+                        <i class="text-orange ri-star-s-fill"></i>
+                        <i class="text-orange ri-star-s-fill"></i>
+                        <i class="text-orange ri-star-s-fill"></i>
+                        <i class="text-orange ri-star-s-fill"></i>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-10  px-3">
+                    <div><img src=""> <p class="text-gray-200">James Clifford</p></div>
+                    <div><span>123 456</span> enrolled</div>
+                </div>
+            </div>
+            <div class= "my-4 border border-border_color">
+                <div><img src="../images/course_img.png" alt=""></div>
+                <div class="text-xl p-3">UI/Ux design basics road map</div>
+                <div class=" px-3 grid pb-2 grid-cols-2 gap-10">
+                    <div class="flex gap-2">
+                        <h4>$165</h4>
+                        <h4 class="text-blur">$226</h4>
+                    </div>
+                    <div class="flex ">
+                        <p class="pr-2" >4.5</p>
+                        <i class="text-orange ri-star-s-fill"></i>
+                        <i class="text-orange ri-star-s-fill"></i>
+                        <i class="text-orange ri-star-s-fill"></i>
+                        <i class="text-orange ri-star-s-fill"></i>
+                        <i class="text-orange ri-star-s-fill"></i>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-10  px-3">
+                    <div><img src=""> <p class="text-gray-200">James Clifford</p></div>
+                    <div><span>123 456</span> enrolled</div>
+                </div>
+            </div>
+            <div class= "my-4 border border-border_color">
+                <div><img src="../images/course_img.png" alt=""></div>
+                <div class="text-xl p-3">UI/Ux design basics road map</div>
+                <div class=" px-3 grid pb-2 grid-cols-2 gap-10">
+                    <div class="flex gap-2">
+                        <h4>$165</h4>
+                        <h4 class="text-blur">$226</h4>
+                    </div>
+                    <div class="flex ">
+                        <p class="pr-2" >4.5</p>
+                        <i class="text-orange ri-star-s-fill"></i>
+                        <i class="text-orange ri-star-s-fill"></i>
+                        <i class="text-orange ri-star-s-fill"></i>
+                        <i class="text-orange ri-star-s-fill"></i>
+                        <i class="text-orange ri-star-s-fill"></i>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-10  px-3">
+                    <div><img src=""> <p class="text-gray-200">James Clifford</p></div>
+                    <div><span>123 456</span> enrolled</div>
+                </div>
+            </div>
+        </div>
+        <div class=" px-20"><button class="mx-auto btn-small">View all</button></div>
+    </section>
+
+<!--===============================HOW IT WORKS=======================================-->
+    <section class="container how_it_works">
+        <h1 class="text-text_black text-4xl my-2 mx-12">How It Works</h1>
+        <div class="container relative">
+            <img src="../images/work_man.svg" class="absolute mx-8 h-60 " alt="">
+            <img src="../images/work_bg.svg" class="h-60" alt="abolute">
+        
+
+        </div>
+        <div>
+            <h1 class="hidden">How It Works</h1>
+            <div class>
+                <div class="text-3xl my-5 mx-12 text-center flex gap-5"><div class="border p-3 rounded-full">1</div> <div class="my-4">Step One</div></div>
+                <p class="text-justify">First you search for your desired course, there are a lot of categories and also filters in which you can use to search for your desired course.
+                     After finding your desired course you then sign up or login</p>
+            </div>
+            <div>
+                <div class="text-3xl my-5 mx-12 text-center flex gap-5"><div class="border p-3 rounded-full">2</div> <div class="my-4">Step Two</div></div>
+                <p class="text-justify">Start taking your lectures by watching your tutorial videos, reading your course documents and also taking quizzes and assignments.
+                     Once you are done you are awarded a certificate </p>
+            </div>
+            <div>
+                <div class="text-3xl my-5 mx-12 text-center flex gap-5"><div class="border p-3 rounded-full">3</div> <div class="my-4">Step Three</div></div>
+                <p class="text-justify">After searching for your desired course and signing up or login you now pay for the course in other to have access to it</p>
+            </div>
+        </div>
+    </section>
+
+<!--===============================CATEGORY=======================================-->
+    <section class="category container mt-10">
+        <h1 class="text-4xl text-center">Browse By Categories</h1>
+        <p class="text-gray text-justify my-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Velit, massa leo massa porta duis lobortis convallis euismod. 
+            Sit felis, quis ante tincidunt quisque est, dui faucibus. Diam eget.</p>
+        <div class="flex gap-4 flex-wrap">
+            <div class="p-4 border text-center border-border_color w-24">
+                <i class="fa fa-music "></i>
+                <h3 class="text-l">Music</h3>
+            </div>
+            <div class="p-4 border text-center border-border_color w-24">
+                <i class="fa fa-eye"></i>
+                <h3 class="text-l">Design</h3>
+            </div>
+            <div class="p-4 border text-center border-border_color w-24">
+                <i class="fa fa-eye"></i>
+                <h3 class="text-l">UI/UX</h3>
+            </div>
+            <div class="p-4 border text-center border-border_color w-24">
+                <i class="fa fa-eye"></i>
+                <h3 class="text-l">Coding</h3>
+            </div>
+            <div class="p-4 border text-center border-border_color w-24">
+                <i class="fa fa-eye"></i>
+                <h3 class="text-l">Business</h3>
+            </div>
+            <div class="p-4 border text-center border-border_color w-24">
+                <i class="fa fa-eye"></i>
+                <h3 class="text-l">Graphics</h3>
+            </div>
+            <div class="p-4 border text-center border-border_color w-24">
+                <i class="fa fa-eye"></i>
+                <h3 class="text-l">Ecommerce</h3>
+            </div>
+            <div class="p-4 border text-center border-border_color w-24">
+                <i class="fa fa-eye"></i>
+                <h3 class="text-l">Writing</h3>
+            </div>
+        </div>
+       
+        <div class='px-20 my-5'><button class="btn-small">View all</button></div>
+    </section>
+
+<!--==================================TRUSTED BY====================================-->
+    <section class="trusted_by">
+        <div class="text-trusted_blue mt-10 mx-28 text-4xl">Trusted by</div>
+        <div class="bg-trusted_blue py-10 flex container flex-wrap gap-9">
+            <div><img src="../images/icon_1.svg" class="w-20" alt=""></div>
+            <div><img src="../images/icon_2.svg" class="w-20" alt=""></div>
+            <div><img src="../images/icon_3.svg" class="w-20" alt=""></div>
+            <div><img src="../images/icon_4.svg" class="w-20" alt=""></div>
+            <div><img src="../images/icon_5.svg" class="w-20" alt=""></div>
+            <div><img src="../images/icon_6.svg" class="w-20" alt=""></div>
+        </div>
+    </section>
+
+<!--=============================FEEDBACK=========================================-->
+    <section class="feedback container my-20">
+        <div>
+            <div>
+                <img src="../images/feedback_img.png" alt="">
+                <div></div>
+            </div>
+            <div class="my-10">
+                <h1></h1>
+                <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                     Lacus orci lobortis adipiscing eu nisl. Rutrum malesuada commodo nisl a phasellus consequat. 
+                     Scelerisque porta metus, facilisi amet, faucibus facilisis.</p>
+                
+                <div class="my-5">
+                    <p class="font-bold">James Crammer</p>
+                    <p>Designer at <span class="text-orange">Apple</span> </p>
+                </div>
+                <div class="text-center">
+                   <i class="text-orange text-xs ri-checkbox-blank-circle-line"></i>
+                   <i class="text-orange text-xs ri-checkbox-blank-circle-line"></i>
+                   <i class="text-orange text-xs ri-checkbox-blank-circle-fill"></i>
+                   <i class="text-orange text-xs ri-checkbox-blank-circle-line"></i>
+                   <i class="text-orange text-xs ri-checkbox-blank-circle-line"></i>
+
+
+                </div>
+                <div class="text-center">
+                    <div><i class="text-orange text-2xl ri-arrow-left-circle-line"></i>
+                        <i class=" text-orange text-2xl ri-arrow-right-circle-line"></i>
+                </div>
+                </div>
+            </div>
+        </div>
+       
+    </section>
+
+<!--===============================BLOG_POSTS=======================================-->
+    <section class="blog_post container">
+        <h1 class="text-4xl text-center">Our latest blog</h1>
+        <div class="my-10">
+            <div class="shadow-2xl my-4">
+                <div><img src="../images/blog.png" alt=""></div>
+                <div class="p-4 ">
+                    <p class="mt-1">ARTICLE</p>
+                    <p class="font-bold my-1 text-sm">Placerat sed pharetra interdum odio et tincidunt</p>
+                    <p class="text-gray">In purus at morbi magna in in maecenas. Nunc nulla magna elit, varius phasellus blandit convallis.</p>
+                </div>
+            </div>
+            <div class="shadow-2xl my-4">
+                <div><img src="../images/blog.png" alt=""></div>
+                <div class="p-4 ">
+                    <p class="mt-1">ARTICLE</p>
+                    <p class="font-bold my-1 text-sm">Placerat sed pharetra interdum odio et tincidunt</p>
+                    <p class="text-gray">In purus at morbi magna in in maecenas. Nunc nulla magna elit, varius phasellus blandit convallis.</p>
+                </div>
+            </div>
+            <div class="shadow-2xl my-4">
+                <div><img src="../images/blog.png" alt=""></div>
+                <div class="p-4 ">
+                    <p class="mt-1">ARTICLE</p>
+                    <p class="font-bold my-1 text-sm">Placerat sed pharetra interdum odio et tincidunt</p>
+                    <p class="text-gray">In purus at morbi magna in in maecenas. Nunc nulla magna elit, varius phasellus blandit convallis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!--===================================NEWSLETTER===================================-->
+    <section class="container newsletter text-center">
+        <h1 class="text-3xl">Get Our Newsletter</h1>
+        <h2 class="text-gray">To join the worldwide community</h2>
+        <div class="border flex border-border_color">
+            <input type="text"  class="p-2" placeholder="Enter your email" name="search">
+            <button class="text-white bg-orange px-4 py-2">Send Now</button>
+        </div>
+    </section>
+
+<!--=====================================FOOTER=================================-->
+    <footer class="container my-10">
+        <div class="text-center">
+            <div>
+                <h1 class="text-3xl">Kwikclass</h1>
+            </div>
+            <div class="list-none my-5">
+                <li>Home</li>
+                <li>Courses</li>
+                <li>Blog</li>
+                <li>Instructors</li>
+            </div>
+        </div>
+        <div><p>Copyright © 2022 Layade joshua . All Rights Reseved.</p></div>
+    </footer>
+    <script src="./index.js"></script>
+</body>
+</html>
