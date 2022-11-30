@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="font-body bg-white">
+        <nav class="bg-white shadow-lg ">
+            <div class="max-w-6xl mx-auto px-4 lg:container">
+				<div class="flex justify-between ">
+					<div class="flex space-x-7 lg:gap-32">
+                        <div class="max-w">
+                            <h1 class="text-text_black font-solway"><a href="#" class="flex items-center text-3xl py-4 px-2">Kwik <span class="text-orange"> Class</span></a></h1>
+                        </div>
+                        <ul class="hidden md:flex items-center space-x-1 lg:gap-6">
+                            <li><a
+                                href=""
+                                class="py-4 px-2  hover:text-orange font-semibold "
+                                >Home</a></li>
+                            <li><a
+                                href=""
+                                class="py-4 px-2 text-orange-500 hover:text-orange border-orange-500 font-semibold "
+                                >Courses</a></li>
+                            <li><a
+                                href=""
+                                class="py-4 px-2 text-orange-500 hover:text-orange border-orange-500 font-semibold "
+                                >Blog</a></li>
+                            <li><a
+                                href=""
+                                class="py-4 px-2 text-orange-500 hover:text-orange border-orange-500 font-semibold "
+                                >Instructors</a></li>
+                        </ul>
+                        <div class="hidden md:flex items-center space-x-3 ">
+                            <a href="" class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-orange hover:text-white transition duration-300">Log In</a>
+                            <a href="" class="py-2 px-2 font-medium text-orange rounded hover:bg-orange-400 transition duration-300"><i class="ri-shopping-cart-2-line text-2xl"></i></a>
+                        </div>
+                    </div>
+                        <div class="md:hidden flex items-center">
+                            <button class="outline-none text-orange mobile-menu-button">
+                            <svg class=" w-6 h-6 text-gray-500 hover:text-orange-500 "
+                                x-show="!showMenu"
+                                fill="none"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden mobile-menu">
+				<ul class="">
+					<li class="active"><a href="./index.html" class="block text-sm px-2 py-4 text-orange bg-orange-500 font-semibold">Home</a></li>
+					<li><a href="./courses.html" class="block text-sm px-2 py-4 hover:bg-orange-500 transition duration-300">Courses</a></li>
+					<li><a href="#about" class="block text-sm px-2 py-4 hover:bg-orange-500 transition duration-300">Blog</a></li>
+					<li><a href="#contact" class="block text-sm px-2 py-4 hover:bg-orange-500 transition duration-300">Instructors</a></li>
+				</ul>
+			</div>
+        </nav>
+    </header>
+    <section class="container md:mt-10">
+        <div class="flex flex-wrap justify-center md:gap-5 md:flex-row">
+            <div class="lg:ml-28 lg:my-5">
+                <ul class="md:flex md:gap-x-2 ">
+                    <li class="hover:text-orange">All Categories</li>
+                    <li class="hover:text-orange">UI/UX design</li>
+                    <li class="hover:text-orange">Graphic Design</li>
+                    <li class="hover:text-orange">Business Administration</li>
+                    <li class="hover:text-orange">Marketing</li>
+                    <li class="hover:text-orange">Computer Science</li>
+                    <i class="ri-arrow-right-s-line border rounded-full text-orange xs:hidden md:block"></i>
+                </ul>
+            </div>
+    </section>
+
+
+    <section class="container ">
+        <div class="md:flex md:gap-x-9 md:my-5">
+            <div>
+                <form action="" method="get post" class="border border-orange p-2 rounded-xl">
+                    <input type= "text" placeholder="search.." class="w-72" >
+                    <button><i class="ri-search-eye-line text-orange"></i></button>
+                </form>
+            </div>
+            <div class="flex">
+                <div class="mt-4 flex">
+                    <div class="p-0 mr-5">Free</div>
+                    <label class="inline-flex relative items-center mr-5 cursor-pointer">
+    
+                        <input type="checkbox" value="" class="sr-only peer" checked>
+                        <div class="w-11 h-6 bg-orange rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-orange-300 dark:peer-focus:ring-orange-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-orange-500"></div>
+                        <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Premium</span>
+                    </label>
+                </div>
+                <div class="mt-4">
+                    <form action="" class=" border border-orange flex h-8">
+                        <select name="categories" id="categories" class="w-1\/3 bg-white">
+                            <option value="volvo">Popular</option>
+                            <option value="saab">Latest</option>
+                            <option value="mercedes">Top Rated</option>
+                        </select>
+                </form>
+                </div>
+               
+            </div>
+           
+        </div>
+    </section>
+    <section class="container">
+        <div class= "my-4  w-60 border border-border_color">
+            <div><img src="../images/course_img.png" alt=""></div>
+            <div class="text-base p-3">UI/Ux design basics road map</div>
+            <div class=" px-3 grid pb-2 grid-cols-2 ">
+                <div class="flex gap-2">
+                    <h4>$165</h4>
+                    <h4 class="text-blur">$226</h4>
+                </div>
+                <div class="flex ">
+                    <p class="pr-2" >4.5</p>
+                    <i class="text-orange ri-star-s-fill"></i>
+                    <i class="text-orange ri-star-s-fill"></i>
+                    <i class="text-orange ri-star-s-fill"></i>
+                    <i class="text-orange ri-star-s-fill"></i>
+                    <i class="text-orange ri-star-s-fill"></i>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-10  px-3">
+                <div><img src=""> <p class="text-gray-200">James Clifford</p></div>
+                <div><span>123 456</span> enrolled</div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+        
+    <footer class="container my-10">
+        <div class="text-center md:flex md:gap-36">
+            <div>
+                <h1 class="text-3xl md:text-center md:mt-4">Kwik<span class="text-orange">Class</span></h1>
+            </div>
+            <div class="list-none my-5 md:flex md:gap-10">
+                <li>Home</li>
+                <li>Courses</li>
+                <li>Blog</li>
+                <li>Instructors</li>
+            </div>
+        </div>
+        <div><p class="md:text-center">Copyright © 2022 Adedayo Ayomide. All Rights Reseved.</p></div>
+    </footer>
+    <script src="./course_card.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>
