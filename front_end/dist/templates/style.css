@@ -5,7 +5,12 @@
     .w-md-25{
         width: 25% !important;
     }
-   
+    
+    #menu_box{
+        position:static;
+        top: 0;
+        left: 0;
+    }
 }
 
 @media only screen and (min-width: 992px) {
@@ -14,4 +19,7 @@
     }
    
 }
+
+
+
 
