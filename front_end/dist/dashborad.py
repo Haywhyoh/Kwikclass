@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/dashboard')
 def dashboard():
-    return render_template('dashboard.html')
+    return render_template('overview.html')
 
 
 if __name__ == "__main__":
