@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template, url_for
 from api.views import app_views
 from flask import jsonify, make_response
 from models.engine.db_storage import DB_Storage
@@ -25,6 +25,7 @@ def status():
 @app.errorhandler
 def not_found(error):
     make_response(jsonify({'error':"Not Found"}), 404)
+
 
 
 if __name__ == "__main__":
