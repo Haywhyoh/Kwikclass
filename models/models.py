@@ -75,7 +75,7 @@ class Student(BaseModel, Base):
     schedules = Column(Integer())
     email = Column(String(60), unique=True)
     profile_picture = Column(String(50))
-    courses = relationship('Courses',secondary='enrollment', back_populates='parents')
+    courses = relationship('Courses',secondary='enrollment', backref='students-courses')
 
     def __repr__(self):
         return f"Student: {self.first_name} , {self.last_name}, {self.active_courses}, {self.certificate_earned},{self.course_enrolled}, {self.hours_watched}, {self.country}, {self.sex}, {self.date_of_birth}, {self.schedules}, {self.email}, {self.profile_picture}"
@@ -96,7 +96,7 @@ class Instructor(BaseModel, Base):
     sex = Column(String(15), nullable=False)
     date_of_birth = Column(String(10), nullable=False)
     profile_picture = Column(String(50), unique=True)
-    courses = relationship('Courses',secondary='created', back_populates='parents')
+    courses = relationship('Courses',secondary='created', backref='instructor-courses')
 
 
 class Courses(BaseModel, Base):
@@ -111,9 +111,9 @@ class Courses(BaseModel, Base):
     estimated_time = Column(SmallInteger(), nullable=False)
     course_desc = Column(Text(), nullable=False)
     no_of_document = Column(SmallInteger(), nullable=False)
-    pricing = relationship("Pricing", uselist=False, back_populates="parent", cascade="all, delete")
-    student = relationship(Student,secondary='enrollment', back_populates='children')
-    instructors = relationship(Instructor,secondary='created', back_populates='children')
+    pricing = relationship("Pricing", uselist=False, backref="courses", cascade="all, delete")
+    student = relationship(Student,secondary='enrollment', backref='courses-student')
+    instructors = relationship(Instructor,secondary='created', backref='instructor-courses')
 
 
 class Enrollment(BaseModel, Base):
@@ -127,7 +127,7 @@ class Pricing(Base, BaseModel):
     promo_price = Column(SmallInteger())
     paid = Column(Boolean(), nullable=False)
     course_id = Column(String(60), ForeignKey("courses.id", ondelete="CASCADE"))
-    course = relationship("Courses", back_populates='child')
+    course = relationship("Courses", backref='course_pricing')
 
 class Created(Base):
     __tablename__ = 'created'
