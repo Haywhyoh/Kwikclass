@@ -32,7 +32,7 @@ def delete_course(course_id):
         """
         Deletes a user Object
         """
-        course = storage.local_session.query(course).filter_by(id=course_id).delete(synchronize_session=False)
+        course = storage.local_session.query(Courses).filter_by(id=course_id).delete(synchronize_session=False)
         if not course:
             abort(404)
         storage.save()
@@ -40,8 +40,10 @@ def delete_course(course_id):
 
 @courses.route('/courses/popular', methods=['GET'], strict_slashes=False)
 def popular():
-    course= storage.local_session.query(courses).order_by(desc(courses.no_of_reviews))
-    return jsonify(course)
+    course= storage.local_session.query(Courses).order_by(desc('no_of_reviews'))
+    b = storage.local_session.execute(str(course))
+
+    return jsonify(b)
 
 @courses.route('/courses', methods=['POST'], strict_slashes=False)
 def post_course():
