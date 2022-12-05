@@ -22,5 +22,14 @@ def login():
 @app.route('/signup',  strict_slashes=False )
 def signup():
     return render_template('signup.html')
+
+@app.route('/course_page', strict_slashes=False)
+def course_page():
+    return render_template('course_page.html')
+
+@app.route('/checkout', strict_slashes=False)
+def cart_page():
+    return render_template('checkout.html')
+
 if __name__ == "__main__":
     app.run(debug=True)
