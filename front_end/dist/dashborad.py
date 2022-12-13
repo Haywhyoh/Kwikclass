@@ -1,4 +1,5 @@
 from flask import Flask, render_template, url_for
+import requests
 
 app = Flask(__name__)
 
@@ -8,12 +9,18 @@ def dashboard():
 
 @app.route('/courses', strict_slashes=False)
 def courses_route():
-    return render_template('courses.html')
+    courses = requests.get("http://127.0.0.1:5000/api/courses").json()
+    return render_template('courses.html', courses=courses)
 
 @app.route('/', strict_slashes=False)
 @app.route('/home', strict_slashes=False)
 def home():
-    return render_template('index.html')
+    new_list = []
+    courses = requests.get("http://127.0.0.1:5000/api/courses").json()
+    for course in courses:
+        if course['no_enrolled'] >= 90:
+            new_list.append(course)
+    return render_template( 'index.html', courses=new_list)
 
 @app.route('/login',  strict_slashes=False )
 def login():
@@ -25,11 +32,11 @@ def signup():
 
 @app.route('/course_page', strict_slashes=False)
 def course_page():
-    return render_template('course_page.html')
+    return render_template('course_page.html', courses=courses)
 
 @app.route('/checkout', strict_slashes=False)
 def cart_page():
     return render_template('checkout.html')
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(port=5500, debug=True)
