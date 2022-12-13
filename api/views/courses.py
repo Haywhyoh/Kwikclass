@@ -40,10 +40,19 @@ def delete_course(course_id):
 
 @courses.route('/courses/popular', methods=['GET'], strict_slashes=False)
 def popular():
-    course= storage.local_session.query(Courses).order_by(desc('no_of_reviews'))
-    b = storage.local_session.execute(str(course))
+    new_list = []
+    course_list = []
+    all_courses = storage.all(cls=Courses)
+    for course in all_courses:
+        course = course.__dict__ 
+        if course['_sa_instance_state']:
+            del course['_sa_instance_state']
+        new_list.append(course)
+    for course in new_list:
+        if course["no_enrolled"] > 90:
+            course_list.append(course)
+    return jsonify(course_list)
 
-    return jsonify(b)
 
 @courses.route('/courses', methods=['POST'], strict_slashes=False)
 def post_course():
