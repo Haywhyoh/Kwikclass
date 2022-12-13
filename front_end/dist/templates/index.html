@@ -17,15 +17,15 @@
 				<div class="flex justify-between ">
 					<div class="flex space-x-7 lg:gap-32 xl:gap-44">
                         <div class="max-w">
-                            <h1 class="text-text_black font-solway"><a href="http://127.0.0.1:5000/" class="flex items-center text-3xl py-4 px-2">Kwik <span class="text-orange"> Class</span></a></h1>
+                            <h1 class="text-text_black font-solway"><a href="http://127.0.0.1:5500/" class="flex items-center text-3xl py-4 px-2">Kwik <span class="text-orange"> Class</span></a></h1>
                         </div>
                         <ul class="hidden md:flex items-center space-x-1 lg:gap-6">
                             <li><a
-                                href="http://127.0.0.1:5000/"
+                                href="http://127.0.0.1:5500/"
                                 class="py-4 px-2  hover:text-orange font-semibold "
                                 >Home</a></li>
                             <li><a
-                                href="http://127.0.0.1:5000/courses"
+                                href="http://127.0.0.1:5500/courses"
                                 class="py-4 px-2 text-orange-500 hover:text-orange border-orange-500 font-semibold "
                                 >Courses</a></li>
                             <li><a
@@ -38,7 +38,7 @@
                                 >Instructors</a></li>
                         </ul>
                         <div class="hidden md:flex items-center space-x-3 ">
-                            <a href="http://127.0.0.1:5000/login" class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-orange hover:text-white transition duration-300">Log In</a>
+                            <a href="http://127.0.0.1:5500/login" class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-orange hover:text-white transition duration-300">Log In</a>
                             <a href="" class="py-2 px-2 font-medium text-orange rounded hover:bg-orange-400 transition duration-300"><i class="ri-shopping-cart-2-line text-2xl"></i></a>
                         </div>
                     </div>
@@ -61,8 +61,8 @@
             </div>
             <div class="hidden mobile-menu">
 				<ul class="">
-					<li class="active"><a href="http://127.0.0.1:5000/" class="block text-sm px-2 py-4 text-orange bg-orange-500 font-semibold">Home</a></li>
-					<li><a href="http://127.0.0.1:5000/courses" class="block text-sm px-2 py-4 hover:bg-orange-500 transition duration-300">Courses</a></li>
+					<li class="active"><a href="http://127.0.0.1:5500/" class="block text-sm px-2 py-4 text-orange bg-orange-500 font-semibold">Home</a></li>
+					<li><a href="http://127.0.0.1:5500/courses" class="block text-sm px-2 py-4 hover:bg-orange-500 transition duration-300">Courses</a></li>
 					<li><a href="#about" class="block text-sm px-2 py-4 hover:bg-orange-500 transition duration-300">Blog</a></li>
 					<li><a href="#contact" class="block text-sm px-2 py-4 hover:bg-orange-500 transition duration-300">Instructors</a></li>
 				</ul>
@@ -138,10 +138,10 @@
             </ul>
         </div>
         <div class="flex flex-wrap justify-center md:gap-5 md:flex-row">
-            {% for i in range(8): %}
+            {% for course in courses: %}
             <div class= "my-4  w-60 border border-border_color">
                 <div><img src="../static/images/course_img.png" alt=""></div>
-                <div class="text-base p-3">UI/Ux design basics road map</div>
+                <div class="text-base p-3">{{course.title}}</div>
                 <div class=" px-3 grid pb-2 grid-cols-2 ">
                     <div class="flex gap-2">
                         <h4>$165</h4>
@@ -158,12 +158,12 @@
                 </div>
                 <div class="grid grid-cols-2 gap-10  px-3">
                     <div><img src=""> <p class="text-gray-200">James Clifford</p></div>
-                    <div><span>123 456</span> enrolled</div>
+                    <div><span>{{course.no_enrolled}}</span> enrolled</div>
                 </div>
             </div>
             {% endfor %}
         </div>
-        <div class=" px-20 xs:px-24 md:px-72 lg:ml-10 lg:px-96 xl:ml-40"><a href="http://127.0.0.1:5000/courses/"><button class="mx-auto btn-small">View all</button></a></div>
+        <div class=" px-20 xs:px-24 md:px-72 lg:ml-10 lg:px-96 xl:ml-40"><a href="http://127.0.0.1:5500/courses/"><button class="mx-auto btn-small">View all</button></a></div>
     </section>
 
 <!--===============================HOW IT WORKS=======================================-->
