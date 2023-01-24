@@ -2,6 +2,7 @@ from flask import Flask, render_template, url_for
 import requests
 
 app = Flask(__name__)
+courses = requests.get("http://127.0.0.1:5000/api/courses").json()
 
 @app.route('/overview', strict_slashes=False)
 def dashboard():
@@ -9,14 +10,15 @@ def dashboard():
 
 @app.route('/courses', strict_slashes=False)
 def courses_route():
-    courses = requests.get("http://127.0.0.1:5000/api/courses").json()
+    # courses = requests.get("http://127.0.0.1:5000/api/courses").json()
     return render_template('courses.html', courses=courses)
 
 @app.route('/', strict_slashes=False)
 @app.route('/home', strict_slashes=False)
+
+
 def home():
     new_list = []
-    courses = requests.get("http://127.0.0.1:5000/api/courses").json()
     for course in courses:
         if course['no_enrolled'] >= 90:
             new_list.append(course)
